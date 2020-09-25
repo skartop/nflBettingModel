@@ -2,7 +2,7 @@ import os
 
 
 class Game():
-    def __init__(self, home_team, visitor_team, home_points, visitor_points, date):
+    def __init__(self, home_team, visitor_team, home_points=0, visitor_points=0, date=0, spread=0):
         self.home_team = home_team
         self.visitor_team = visitor_team
         self.home_points = home_points
@@ -11,7 +11,7 @@ class Game():
         self.home_margin_of_victory = home_points - visitor_points
 
         self.total = 0
-        self.spread = 0
+        self.spread = spread
         self.favorite = 0
         self.cover = 0
         self.over = 0
