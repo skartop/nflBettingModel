@@ -1,45 +1,45 @@
 chicago 3.0 atlanta 
-Pick: atlanta (100%)
+Pick: atlanta (55%)
 
 larams 2.0 buffalo 
-Pick: larams (99%)
+Pick: larams (72%)
 
 washingtonfootball 7.0 cleveland 
-Pick: washingtonfootball (99%)
+Pick: cleveland (58%)
 
 tennessee -2.5 minnesota 
-Pick: minnesota (100%)
+Pick: minnesota (56%)
 
 lasvegas 5.5 newengland 
-Pick: lasvegas (99%)
+Pick: lasvegas (58%)
 
 sanfrancisco -3.5 nygiants 
-Pick: nygiants (100%)
+Pick: nygiants (55%)
 
 cincinnati 5.0 philadelphia 
-Pick: philadelphia (100%)
+Pick: philadelphia (53%)
 
 houston 4.0 pittsburgh 
-Pick: houston (99%)
+Pick: houston (84%)
 
 nyjets 11.5 indianapolis 
-Pick: nyjets (99%)
+Pick: nyjets (92%)
 
 carolina 6.5 lachargers 
-Pick: carolina (99%)
+Pick: carolina (73%)
 
 tampabay -5.5 denver 
-Pick: denver (100%)
+Pick: tampabay (75%)
 
 detroit 5.5 arizona 
-Pick: detroit (99%)
+Pick: detroit (75%)
 
 dallas 5.0 seattle 
-Pick: dallas (99%)
+Pick: dallas (75%)
 
 greenbay 3.0 neworleans 
-Pick: neworleans (100%)
+Pick: neworleans (51%)
 
 kansascity 3.5 baltimore 
-Pick: kansascity (99%)
+Pick: kansascity (64%)
 

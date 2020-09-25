@@ -63,5 +63,5 @@ def findTeam(team_name):
             return team
 
 
-model = keras.models.load_model('spreadpredictionmodel')
+model = keras.models.load_model('model/spreadpredictionmodel')
 league = pullTeams(2020)
