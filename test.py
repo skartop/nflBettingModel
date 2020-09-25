@@ -10,9 +10,32 @@ def getGameInfo(url):
     response = requests.get("https://www.espn.com{}".format(url))
     soup = BeautifulSoup(response.text, "html.parser")
     soup.prettify()
-    teams = soup.findAll('span', {'class': 'long-name'})
-    away_team = teams[0].text.strip()
-    home_team = teams[1].text.strip()
+    teams_long = soup.findAll('span', {'class': 'long-name'})
+    teams_short = soup.findAll('span', {'class': 'short-name'})
+    away_team = teams_long[0].text.strip()
+    if away_team == 'Los Angeles':
+        if teams_short[0].text.strip() == 'Rams':
+            away_team = 'larams'
+        else:
+            away_team = 'lachargers'
+    if away_team == 'New York':
+        if teams_short[0].text.strip() == 'Giants':
+            away_team = 'nygiants'
+        else:
+            away_team = 'nyjets'
+
+    home_team = teams_long[1].text.strip()
+    if home_team == 'Los Angeles':
+        if teams_short[1].text.strip() == 'Rams':
+            home_team = 'larams'
+        else:
+            home_team = 'lachargers'
+    if home_team == 'New York':
+        if teams_short[1].text.strip() == 'Giants':
+            home_team = 'nygiants'
+        else:
+            home_team = 'nyjets'
+
     spread = round(float(soup.findAll('tr', {'class': 'awayteam'})[0].contents[9].text.strip()), 1)
     return away_team, home_team, spread
 

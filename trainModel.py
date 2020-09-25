@@ -63,10 +63,10 @@ model.fit(X_train, y_train, epochs=500, batch_size=128, validation_data=(X_test,
 # model.fit(X_train, y_train, epochs=500, batch_size=128, validation_data=(X_test,y_test), callbacks=[EarlyStopping(monitor='val_loss', patience=4)])
 
 # evaluate the keras model
-# oldModel = keras.models.load_model('spreadpredictionmodel')
-# _, oldAccuracy = oldModel.evaluate(X, y)
+oldModel = keras.models.load_model('spreadpredictionmodel')
+_, oldAccuracy = oldModel.evaluate(X, y)
 _, accuracy = model.evaluate(X_test, y_test)
-# print('Old Accuracy: %.2f' % (oldAccuracy * 100))
+print('Old Accuracy: %.2f' % (oldAccuracy * 100))
 print('Accuracy: %.2f' % (accuracy * 100))
 
 # make class predictions with the model
@@ -75,6 +75,6 @@ predictions = model.predict_classes(X_test)
 for i in range(15):
     print('%s => %d (expected %d)' % (X_test[i].tolist(), predictions[i], y_test[i]))
 
-# if accuracy > oldAccuracy:
-print("replacing old model!")
-model.save('spreadpredictionmodel')
+if accuracy > oldAccuracy:
+    print("replacing old model!")
+    model.save('spreadpredictionmodel')
