@@ -20,7 +20,7 @@ class Team:
         self.team_total_yards = float(self.team_stats[2].text.strip())
         self.team_plays_offense = float(self.team_stats[3].text.strip())
         self.team_yds_per_play_offense = float(self.team_stats[4].text.strip())
-        self.team_turnovers = float(self.team_stats[5].text.strip())
+        self.team_turnovers = float(self.team_stats[5].text.strip()) if self.team_stats[5].text.strip() != '' else 0
         self.team_fumbles_lost = float(self.team_stats[6].text.strip())
         self.team_first_down = float(self.team_stats[7].text.strip())
         self.team_pass_cmp = float(self.team_stats[8].text.strip())
@@ -37,11 +37,11 @@ class Team:
         self.team_rush_fd = float(self.team_stats[19].text.strip())
         self.team_penalties = float(self.team_stats[20].text.strip())
         self.team_penalties_yds = float(self.team_stats[21].text.strip())
-        self.team_pen_fd = float(self.team_stats[22].text.strip())
+        self.team_pen_fd = float(self.team_stats[22].text.strip()) if self.team_stats[22].text.strip() != '' else 0
         self.team_drives = float(self.team_stats[23].text.strip())
         self.team_score_pct = float(self.team_stats[24].text.strip())
         self.team_turnover_pct = float(self.team_stats[25].text.strip())
-        self.team_start_avg = float(self.team_stats[26].text.strip().replace('Own ', ''))
+        self.team_start_avg = float(self.team_stats[26].text.strip().replace('Own ', '').replace('Opp ', '-'))
         self.team_time_avg = float(self.team_stats[27].text.strip().replace(':', ''))
         self.team_plays_per_drive = float(self.team_stats[28].text.strip())
         self.team_yds_per_drive = float(self.team_stats[29].text.strip())
@@ -51,7 +51,7 @@ class Team:
         self.opp_total_yards = float(self.opp_stats[2].text.strip())
         self.opp_plays_offense = float(self.opp_stats[3].text.strip())
         self.opp_yds_per_play_offense = float(self.opp_stats[4].text.strip())
-        self.opp_turnovers = float(self.opp_stats[5].text.strip())
+        self.opp_turnovers = float(self.team_stats[5].text.strip()) if self.team_stats[5].text.strip() != '' else 0
         self.opp_fumbles_lost = float(self.opp_stats[6].text.strip())
         self.opp_first_down = float(self.opp_stats[7].text.strip())
         self.opp_pass_cmp = float(self.opp_stats[8].text.strip())
@@ -68,11 +68,11 @@ class Team:
         self.opp_rush_fd = float(self.opp_stats[19].text.strip())
         self.opp_penalties = float(self.opp_stats[20].text.strip())
         self.opp_penalties_yds = float(self.opp_stats[21].text.strip())
-        self.opp_pen_fd = float(self.opp_stats[22].text.strip())
+        self.opp_pen_fd = float(self.team_stats[22].text.strip()) if self.team_stats[22].text.strip() != '' else 0
         self.opp_drives = float(self.opp_stats[23].text.strip())
         self.opp_score_pct = float(self.opp_stats[24].text.strip())
         self.opp_turnover_pct = float(self.opp_stats[25].text.strip())
-        self.opp_start_avg = float(self.opp_stats[26].text.strip().replace('Own ', ''))
+        self.opp_start_avg = float(self.opp_stats[26].text.strip().replace('Own ', '').replace('Opp ', '-'))
         self.opp_time_avg = float(self.opp_stats[27].text.strip().replace(':', ''))
         self.opp_plays_per_drive = float(self.opp_stats[28].text.strip())
         self.opp_yds_per_drive = float(self.opp_stats[29].text.strip())
@@ -107,6 +107,7 @@ class Team:
             "nygiants": "nyg",
             "nyjets": "nyj",
             "oakland": "rai",
+            "lasvegas": "rai",
             "lvraiders": "rai",
             "philadelphia": "phi",
             "pittsburgh": "pit",
@@ -115,6 +116,7 @@ class Team:
             "tampabay": "tam",
             "tennessee": "oti",
             "washington": "was",
+            "washingtonfootball": "was",
         }
         return switcher.get(self.name)
 
@@ -122,7 +124,10 @@ class Team:
         response = requests.get(self.url)
         soup = BeautifulSoup(response.text, "html.parser")
         soup.prettify()
-        game_table = soup.findAll('table', {"id": "team_stats"})[0]
+        try:
+            game_table = soup.findAll('table', {"id": "team_stats"})[0]
+        except:
+            x=3
         self.team_stats = game_table.contents[6].contents[1].contents
         self.opp_stats = game_table.contents[6].contents[3].contents
 

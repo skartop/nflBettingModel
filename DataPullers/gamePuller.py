@@ -44,17 +44,20 @@ def pullGames(year, league):
         if not (isinstance(game, NavigableString)):
             if isinstance(game.contents[2], NavigableString) or game.contents[2].text.strip() == 'Playoffs':
                 continue
-            date = getDate(game.contents[2].text.strip())
-            location = game.find('td', {'data-stat':'game_location'}).text.strip()
-            winner = findTeam(league, game.find('td', {'data-stat':'loser'}).text.strip())
-            loser = findTeam(league, game.find('td', {'data-stat':'winner'}).text.strip())
-            winner_points = int(game.find('td', {'data-stat':'pts_win'}).text.strip())
-            loser_points = int(game.find('td', {'data-stat':'pts_lose'}).text.strip())
-            if location == '':
-                schedule.append(Game(winner, loser, winner_points, loser_points, date))
-            else:
-                schedule.append(Game(loser, winner, loser_points, winner_points, date))
 
+            try:
+                date = getDate(game.contents[2].text.strip())
+                location = game.find('td', {'data-stat': 'game_location'}).text.strip()
+                winner = findTeam(league, game.find('td', {'data-stat': 'loser'}).text.strip())
+                loser = findTeam(league, game.find('td', {'data-stat': 'winner'}).text.strip())
+                winner_points = int(game.find('td', {'data-stat': 'pts_win'}).text.strip())
+                loser_points = int(game.find('td', {'data-stat': 'pts_lose'}).text.strip())
+                if location == '':
+                    schedule.append(Game(winner, loser, winner_points, loser_points, date))
+                else:
+                    schedule.append(Game(loser, winner, loser_points, winner_points, date))
+            except:
+                continue
     return schedule
 
 
@@ -62,5 +65,3 @@ def findTeam(league, team_name):
     for team in league:
         if team.name == getTeamName(team_name):
             return team
-
-
