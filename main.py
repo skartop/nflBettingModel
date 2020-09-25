@@ -1,15 +1,31 @@
+import requests
+from bs4 import BeautifulSoup
+
 from predictSpreads import findTeam, predictGame
+from test import pullSchedule
 
 predictions = []
-date = "2020-09-25"
+week = 3
+url = "https://www.espn.com/nfl/schedule/_/week/{}".format(week)
 
-team1 = findTeam("neworleans")
-team2 = findTeam("greenbay")
+games = pullSchedule(url)
 
-predictions.append(predictGame(team1, team2, -3))
+for game in games:
+    away = findTeam(game[0])
+    home = findTeam(game[1])
+    spread = game[2]
+    print(away.name, home.name, spread)
+    predictions.append(predictGame(away, home, spread))
 
-
-fileName = 'predictions/spreads/%s.txt' % date
+# for game in schedule
+#
+# team1 = findTeam("neworleans")
+# team2 = findTeam("greenbay")
+#
+# predictions.append(predictGame(team1, team2, -3))
+#
+#
+fileName = 'predictions/spreads/week{}.txt'.format(week)
 
 with open(fileName, 'w') as f:
     f.writelines(predictions)
