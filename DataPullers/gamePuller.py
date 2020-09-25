@@ -45,11 +45,16 @@ def pullGames(year, league):
             if isinstance(game.contents[2], NavigableString) or game.contents[2].text.strip() == 'Playoffs':
                 continue
             date = getDate(game.contents[2].text.strip())
-            visitor = findTeam(league, game.contents[4].text.strip())
-            home = findTeam(league, game.contents[6].text.strip())
-            visitor_points = int(game.contents[8].text.strip())
-            home_points = int(game.contents[9].text.strip())
-            schedule.append(Game(home, visitor, home_points, visitor_points, date))
+            location = game.find('td', {'data-stat':'game_location'}).text.strip()
+            winner = findTeam(league, game.find('td', {'data-stat':'loser'}).text.strip())
+            loser = findTeam(league, game.find('td', {'data-stat':'winner'}).text.strip())
+            winner_points = int(game.find('td', {'data-stat':'pts_win'}).text.strip())
+            loser_points = int(game.find('td', {'data-stat':'pts_lose'}).text.strip())
+            if location == '':
+                schedule.append(Game(winner, loser, winner_points, loser_points, date))
+            else:
+                schedule.append(Game(loser, winner, loser_points, winner_points, date))
+
     return schedule
 
 
