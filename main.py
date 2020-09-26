@@ -1,32 +1,33 @@
-import requests
-from bs4 import BeautifulSoup
-
 from predictSpreads import findTeam, predictGame
-from test import pullSchedule
+from DataPullers.pullWeeklySchedule import pullSchedule
 
 predictions = []
+predictionstrings = []
 week = 3
 url = "https://www.espn.com/nfl/schedule/_/week/{}".format(week)
 
-games = pullSchedule(url)
 
-for game in games:
-    away = findTeam(game[0])
-    home = findTeam(game[1])
-    spread = game[2]
-    print(away.name, home.name, spread)
-    predictions.append(predictGame(away, home, spread))
+def predictGames(games):
+    for game in games:
+        away = findTeam(game[0])
+        home = findTeam(game[1])
+        spread = game[2]
+        prediction = predictGame(away, home, spread)
+        predictions.append(prediction)
+        predictionstrings.append(prediction.predictionstring)
+    fileName = 'predictions/spreads/week{}.txt'.format(week)
+    with open(fileName, 'w') as f:
+        f.writelines(predictionstrings)
+    f.close()
+    return predictions
 
-# for game in schedule
-#
-# team1 = findTeam("neworleans")
-# team2 = findTeam("greenbay")
-#
-# predictions.append(predictGame(team1, team2, -3))
-#
-#
-fileName = 'predictions/spreads/week{}.txt'.format(week)
 
-with open(fileName, 'w') as f:
-    f.writelines(predictions)
-f.close()
+predictions = predictGames(pullSchedule(url))
+bankroll = 100
+top_bets = []
+for prediction in predictions:
+    if prediction.confidence > 0.74:
+        top_bets.append(prediction)
+
+for bet in top_bets:
+    print(bet.pick, "$" + str(round(bet.fraction_of_bankroll * bankroll / len(top_bets), 2)))

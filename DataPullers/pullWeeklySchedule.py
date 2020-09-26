@@ -54,5 +54,5 @@ def pullSchedule(url):
             games.append([away, home, spread])
     return games
 
-games = pullSchedule(url)
-x=3
+
+

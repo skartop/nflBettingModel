@@ -10,14 +10,14 @@ Pick: cleveland (58%)
 tennessee -2.5 minnesota 
 Pick: minnesota (56%)
 
-lasvegas 5.5 newengland 
-Pick: lasvegas (58%)
+lasvegas 6.0 newengland 
+Pick: lasvegas (59%)
 
 sanfrancisco -3.5 nygiants 
 Pick: nygiants (55%)
 
-cincinnati 5.0 philadelphia 
-Pick: philadelphia (53%)
+cincinnati 4.0 philadelphia 
+Pick: philadelphia (54%)
 
 houston 4.0 pittsburgh 
 Pick: houston (84%)
