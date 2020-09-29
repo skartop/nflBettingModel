@@ -1,9 +1,9 @@
 from predictSpreads import findTeam, predictGame
 from DataPullers.pullWeeklySchedule import pullSchedule
 
-predictions = []
-predictionstrings = []
-week = 3
+bets = []
+betstrings = []
+week = 4
 url = "https://www.espn.com/nfl/schedule/_/week/{}".format(week)
 
 
@@ -12,22 +12,33 @@ def predictGames(games):
         away = findTeam(game[0])
         home = findTeam(game[1])
         spread = game[2]
-        prediction = predictGame(away, home, spread)
-        predictions.append(prediction)
-        predictionstrings.append(prediction.predictionstring)
+        bet = predictGame(away, home, spread)
+        bets.append(bet)
+        betstrings.append(bet.predictionstring)
     fileName = 'predictions/spreads/week{}.txt'.format(week)
     with open(fileName, 'w') as f:
-        f.writelines(predictionstrings)
+        f.writelines(betstrings)
     f.close()
-    return predictions
+    return bets
 
 
-predictions = predictGames(pullSchedule(url))
-bankroll = 100
+bets = predictGames(pullSchedule(url))
+bankroll = 77.88
 top_bets = []
-for prediction in predictions:
-    if prediction.confidence > 0.74:
-        top_bets.append(prediction)
+for bet in bets:
+    if bet.confidence > 0.74:
+        top_bets.append(bet)
+
 
 for bet in top_bets:
-    print(bet.pick, "$" + str(round(bet.fraction_of_bankroll * bankroll / len(top_bets), 2)))
+    bet.wager = round(bet.fraction_of_bankroll * bankroll / len(top_bets), 2)
+
+wageredamount = 0
+for bet in top_bets:
+    wageredamount += bet.wager
+    print(bet.pick, "$"+str(bet.wager))
+
+print("Bet: $"+str(round(wageredamount, 2))+" to win: $"+str(round(wageredamount*1.91, 2)))
+
+print("Remaining Bankroll: $"+str(round(bankroll-wageredamount, 2)))
+

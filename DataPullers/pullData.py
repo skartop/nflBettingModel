@@ -170,9 +170,12 @@ def saveGames(league):
     for game in games:
         game.printGameToCSV(year)
 
-for year in range(2007, 2021):
-    league = saveTeams()
-    saveGames(league)
-for year in range(2007, 2020):
-    updateSpreads(year)
+# for year in range(2007, 2021):
+#     league = saveTeams()
+#     saveGames(league)
+# for year in range(2007, 2020):
+#     updateSpreads(year)
 
+year = 2020
+league = saveTeams()
+saveGames(league)

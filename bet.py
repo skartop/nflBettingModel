@@ -1,8 +1,9 @@
-class Prediction:
+class Bet:
     def __init__(self, predictionstring):
         self.predictionstring = predictionstring
         self.confidence, self.pick, self.team1, self.team2, self.spread = self.parsepredictionstring(predictionstring)
         self.fraction_of_bankroll = self.kelly_criterion()
+        self.wager=0
 
     def parsepredictionstring(self, predictionstring):
         split = predictionstring.replace('\n', '').split(' ')

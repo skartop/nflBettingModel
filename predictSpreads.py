@@ -3,7 +3,7 @@ import keras
 import pandas as pd
 from game import Game
 from DataPullers.teamPuller import pullTeams
-from prediction import Prediction
+from bet import Bet
 
 
 def strip_first_col(fname, delimiter=None):
@@ -46,10 +46,10 @@ def predictGame(team1, team2, spread):
                             'date'], axis=1)
     dataset = dataset.to_numpy()
     predictions = model.predict_proba(dataset)
-    return Prediction(('%s %s %s \nPick: %s (%d' % (team1.name,
-                                                    spread,
-                                                    team2.name,
-                                                    team1.name if predictions[0][0] * 100 > 50 else team2.name,
+    return Bet(('%s %s %s \nPick: %s (%d' % (team1.name,
+                                             spread,
+                                             team2.name,
+                                             team1.name if predictions[0][0] * 100 > 50 else team2.name,
                                                     predictions[0][0] * 100 if predictions[0][0] * 100 > 50 else 100 -
                                                                                                                  predictions[
                                                                                                                      0][

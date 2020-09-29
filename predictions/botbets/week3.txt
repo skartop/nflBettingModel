@@ -1,0 +1,11 @@
+('houston', 4.0) $13.28 L
+('nyjets', 11.5) $16.64 L
+('tampabay', -6.0) $9.51 W
+('detroit', 5.5) $9.51 W
+('dallas', 5.0) $9.51 L
+
+Bet: $58.45 to win: $111.64
+Remaining Bankroll: $41.55
+
+Won:  $36.32
+New Bankroll: $77.88

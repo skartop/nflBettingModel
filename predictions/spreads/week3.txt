@@ -1,45 +1,61 @@
-chicago 3.0 atlanta 
+6-9
+
+chicago 3.0 atlanta
 Pick: atlanta (55%)
+L
 
 larams 2.0 buffalo 
 Pick: larams (72%)
+L
 
 washingtonfootball 7.0 cleveland 
 Pick: cleveland (58%)
+W
 
 tennessee -2.5 minnesota 
 Pick: minnesota (56%)
+W
 
 lasvegas 6.0 newengland 
 Pick: lasvegas (59%)
+L
 
 sanfrancisco -3.5 nygiants 
 Pick: nygiants (55%)
+L
 
 cincinnati 4.0 philadelphia 
 Pick: philadelphia (54%)
+L
 
 houston 4.0 pittsburgh 
 Pick: houston (84%)
+L
 
 nyjets 11.5 indianapolis 
 Pick: nyjets (92%)
+L
 
 carolina 6.5 lachargers 
 Pick: carolina (73%)
+W
 
-tampabay -5.5 denver 
+tampabay -6.0 denver 
 Pick: tampabay (75%)
+W
 
 detroit 5.5 arizona 
 Pick: detroit (75%)
+W
 
 dallas 5.0 seattle 
 Pick: dallas (75%)
+L
 
 greenbay 3.0 neworleans 
 Pick: neworleans (51%)
+L
 
 kansascity 3.5 baltimore 
 Pick: kansascity (64%)
-
+W
