@@ -35,7 +35,8 @@ def getGameInfo(url):
             home_team = 'nygiants'
         else:
             home_team = 'nyjets'
-    spread = round(float(soup.findAll('tr', {'class': 'awayteam'})[0].contents[9].text.strip()), 1)
+    spread_String = soup.findAll('tr', {'class': 'awayteam'})[0].contents[9].text.strip()
+    spread = round(float(spread_String if spread_String != 'EVEN' else 0), 1)
     return away_team, home_team, spread
 
 

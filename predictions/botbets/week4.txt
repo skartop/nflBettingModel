@@ -3,5 +3,5 @@
 Bet: $58.26 to win: $111.28
 Remaining Bankroll: $19.62
 
-Won:  $
-New Bankroll: $
+Won:  $111.28
+New Bankroll: $130.90
