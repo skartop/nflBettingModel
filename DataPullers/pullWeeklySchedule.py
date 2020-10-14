@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 predictions = []
-week = 3
+week = 5
 url = "https://www.espn.com/nfl/schedule/_/week/{}".format(week)
 
 
@@ -36,9 +36,12 @@ def getGameInfo(url):
         else:
             home_team = 'nyjets'
     spread_String = soup.findAll('tr', {'class': 'awayteam'})[0].contents[9].text.strip()
-    spread = round(float(spread_String if spread_String != 'EVEN' else 0), 1)
-    return away_team, home_team, spread
-
+    try:
+        spread = round(float(spread_String if spread_String != 'EVEN' else 0), 1)
+        return away_team, home_team, spread
+    except:
+        print("No Spread Found for "+away_team+" @ "+home_team)
+        return away_team, home_team, 'OTB'
 
 def pullSchedule(url):
     response = requests.get(url)

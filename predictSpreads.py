@@ -45,16 +45,18 @@ def predictGame(team1, team2, spread):
                             'over',
                             'date'], axis=1)
     dataset = dataset.to_numpy()
+    if dataset[0][0] == 'OTB':
+        return "Game OTB"
     predictions = model.predict_proba(dataset)
     return Bet(('%s %s %s \nPick: %s (%d' % (team1.name,
                                              spread,
                                              team2.name,
                                              team1.name if predictions[0][0] * 100 > 50 else team2.name,
-                                                    predictions[0][0] * 100 if predictions[0][0] * 100 > 50 else 100 -
-                                                                                                                 predictions[
-                                                                                                                     0][
-                                                                                                                     0] * 100) +
-                       "%)\n\n"))
+                                             predictions[0][0] * 100 if predictions[0][0] * 100 > 50 else 100 -
+                                                                                                          predictions[
+                                                                                                              0][
+                                                                                                              0] * 100) +
+                "%)\n\n"))
 
 
 def findTeam(team_name):

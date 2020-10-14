@@ -3,7 +3,7 @@ from DataPullers.pullWeeklySchedule import pullSchedule
 
 bets = []
 betstrings = []
-week = 4
+week = 6
 url = "https://www.espn.com/nfl/schedule/_/week/{}".format(week)
 
 
@@ -23,7 +23,8 @@ def predictGames(games):
 
 
 bets = predictGames(pullSchedule(url))
-bankroll = 77.88
+
+bankroll = 192.67
 top_bets = []
 for bet in bets:
     if bet.confidence > 0.74:

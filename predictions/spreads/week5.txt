@@ -1,0 +1,43 @@
+tampabay -3.5 chicago 
+Pick: chicago (58%)
+W (19-20)
+
+carolina 2.0 atlanta 
+Pick: atlanta (55%)
+L (23-16)
+
+arizona -7.0 nyjets 
+Pick: nyjets (70%)
+L (30-10)
+
+philadelphia 7.0 pittsburgh 
+Pick: philadelphia (77%)
+L (29-38)
+
+larams -7.0 washingtonfootball 
+Pick: washingtonfootball (70%)
+L (30-10)
+
+jacksonville 6.0 houston 
+Pick: jacksonville (50%)
+L (14-30)
+
+indianapolis -1.5 cleveland 
+Pick: cleveland (54%)
+W (23-32)
+
+nygiants 9.5 dallas 
+Pick: nygiants (75%)
+W (34-37)
+
+minnesota 7.0 seattle 
+Pick: minnesota (82%)
+W (26-27)
+
+lachargers 7.5 neworleans 
+Pick: lachargers (90%)
+W (27-30)
+
+buffalo -3.5 tennessee
+Pick: tennessee (57%)
+W (16-42)
