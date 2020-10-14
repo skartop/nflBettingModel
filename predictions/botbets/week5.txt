@@ -1,7 +1,7 @@
-('philadelphia', 7.0) $16.93
-('nygiants', 9.5) $15.55
-('minnesota', 7.0) $20.36
-('lachargers', 7.5) $25.86
+('philadelphia', 7.0) $16.93 L
+('nygiants', 9.5) $15.55 W
+('minnesota', 7.0) $20.36 W
+('lachargers', 7.5) $25.86 W
 Bet: $78.7 to win: $150.32
 Remaining Bankroll: $52.2
 

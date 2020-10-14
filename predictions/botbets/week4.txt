@@ -1,5 +1,5 @@
-('nygiants', 12.0) $29.95
-('philadelphia', 6.5) $28.31
+('nygiants', 12.0) $29.95 W
+('philadelphia', 6.5) $28.31 W
 Bet: $58.26 to win: $111.28
 Remaining Bankroll: $19.62
 

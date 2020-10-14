@@ -1,0 +1,36 @@
+cincinnati 7.5 indianapolis 
+Pick: cincinnati (97%)
+
+atlanta 3.5 minnesota 
+Pick: atlanta (52%)
+
+washingtonfootball 3.0 nygiants 
+Pick: washingtonfootball (77%)
+
+baltimore -7.5 philadelphia 
+Pick: philadelphia (70%)
+
+cleveland 3.5 pittsburgh 
+Pick: cleveland (57%)
+
+chicago 2.5 carolina 
+Pick: chicago (86%)
+
+detroit -3.5 jacksonville 
+Pick: detroit (54%)
+
+nyjets 8.5 miami 
+Pick: nyjets (93%)
+
+greenbay -1.5 tampabay 
+Pick: tampabay (56%)
+
+larams -3.5 sanfrancisco 
+Pick: sanfrancisco (64%)
+
+arizona -2.5 dallas 
+Pick: dallas (57%)
+
+No Spread Found for Houston @ Tennessee
+No Spread Found for Denver @ New England
+No Spread Found for Kansas City @ Buffalo

@@ -13,8 +13,9 @@ def predictGames(games):
         home = findTeam(game[1])
         spread = game[2]
         bet = predictGame(away, home, spread)
-        bets.append(bet)
-        betstrings.append(bet.predictionstring)
+        if bet != 'Game OTB':
+            bets.append(bet)
+            betstrings.append(bet.predictionstring)
     fileName = 'predictions/spreads/week{}.txt'.format(week)
     with open(fileName, 'w') as f:
         f.writelines(betstrings)
@@ -37,7 +38,7 @@ for bet in top_bets:
 wageredamount = 0
 for bet in top_bets:
     wageredamount += bet.wager
-    print(bet.pick, "$"+str(bet.wager))
+    print(bet.team1, bet.spread, bet.team2, "\nPick: "+str(bet.pick), "$"+str(bet.wager)+"\n")
 
 print("Bet: $"+str(round(wageredamount, 2))+" to win: $"+str(round(wageredamount*1.91, 2)))
 

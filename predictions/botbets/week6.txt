@@ -1,0 +1,16 @@
+cincinnati 7.5 indianapolis
+Pick: ('cincinnati', 7.5) $45.13
+
+washingtonfootball 3.0 nygiants
+Pick: ('washingtonfootball', 3.0) $24.91
+
+chicago 2.5 carolina
+Pick: ('chicago', 2.5) $34.01
+
+nyjets 8.5 miami
+Pick: ('nyjets', 8.5) $41.09
+
+Bet: $145.14 to win: $277.22
+Remaining Bankroll: $47.53
+
+Process finished with exit code 0
