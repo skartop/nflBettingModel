@@ -1,6 +1,8 @@
 import os
-import keras
+
+import numpy as np
 import pandas as pd
+import tensorflow as tf
 from game import Game
 from DataPullers.teamPuller import pullTeams
 from bet import Bet
@@ -44,18 +46,22 @@ def predictGame(team1, team2, spread):
                             'home_margin_of_victory',
                             'over',
                             'date'], axis=1)
-    dataset = dataset.to_numpy()
-    if dataset[0][0] == 'OTB':
+    dataset = dataset.loc[:, ~dataset.columns.str.contains('^Unnamed')]
+    if dataset.iloc[0]['spread'] == 'OTB':
         return "Game OTB"
-    predictions = model.predict_proba(dataset)
+    dataset = dataset.apply(pd.to_numeric, errors='coerce')
+    dataset = dataset.to_numpy(dtype=np.float32)
+    if np.isnan(dataset).any():
+        return "Game OTB"
+    probabilities = model.predict(dataset, verbose=0)
+    prob = float(probabilities[0][0])
+    pick_team = team1.name if prob >= 0.5 else team2.name
+    confidence = round(prob * 100 if prob >= 0.5 else (1 - prob) * 100)
     return Bet(('%s %s %s \nPick: %s (%d' % (team1.name,
                                              spread,
                                              team2.name,
-                                             team1.name if predictions[0][0] * 100 > 50 else team2.name,
-                                             predictions[0][0] * 100 if predictions[0][0] * 100 > 50 else 100 -
-                                                                                                          predictions[
-                                                                                                              0][
-                                                                                                              0] * 100) +
+                                             pick_team,
+                                             confidence) +
                 "%)\n\n"))
 
 
@@ -67,5 +73,5 @@ def findTeam(team_name):
             return team
 
 
-model = keras.models.load_model('model/spreadpredictionmodel')
+model = tf.keras.models.load_model('model/spreadpredictionmodel.keras')
 league = pullTeams(2020)
